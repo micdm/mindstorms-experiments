@@ -36,13 +36,13 @@ class MotorHandler(object):
         @param direction: str
         '''
         if direction == 'up':
-            self.motor_v.turn(self.SPEED_NEGATIVE, self.ANGLE)
-        if direction == 'down':
             self.motor_v.turn(self.SPEED_POSITIVE, self.ANGLE)
+        if direction == 'down':
+            self.motor_v.turn(self.SPEED_NEGATIVE, self.ANGLE)
         if direction == 'left':
-            self.motor_h.turn(self.SPEED_NEGATIVE, self.ANGLE)
-        if direction == 'right':
             self.motor_h.turn(self.SPEED_POSITIVE, self.ANGLE)
+        if direction == 'right':
+            self.motor_h.turn(self.SPEED_NEGATIVE, self.ANGLE)
 
 class LightHandler(object):
     '''
