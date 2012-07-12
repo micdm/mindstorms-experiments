@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Механизированная камера</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            div {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            /**
+             * Отправляет команду на сервер.
+             * Временно блокирует все кнопки.
+             */
+            function doCommand(unit, action) {
+            	var buttons = $(':button');
+            	buttons.attr('disabled', true);
+            	$.post('/' + unit + '/' + action + '/', function() {
+            		buttons.attr('disabled', false);
+            	});
+            }
+        
+	        $(document).ready(function() {
+	            $(':button').click(function() {
+	            	var id = $(this).attr('id');
+	            	var parts = id.split('_');
+	            	doCommand(parts[0], parts[1]);
+	            });
+	        });
+        </script>
+        <div>
+            <input id="motor_up" type="button" value="&uarr;">
+        </div>
+        <div>
+            <input id="motor_left" type="button" value="&larr;">
+            <input id="motor_right" type="button" value="&rarr;">
+        </div>
+        <div>
+            <input id="motor_down" type="button" value="&darr;">
+        </div>
+        <div>
+            <input id="light_on" type="button" value="&#10034">
+            <input id="light_off" type="button" value="&#10033">
+        </div>
+    </body>
+</html>

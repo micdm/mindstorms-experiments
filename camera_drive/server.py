@@ -54,6 +54,7 @@ class LightHandler(object):
         @param brick: Brick
         '''
         self.light = nxt.Color20(brick, nxt.PORT_1)
+        self.turn('off')
     
     def turn(self, state):
         '''
